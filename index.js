@@ -179,15 +179,18 @@ function lowerCaseStrings(strings) {
  * [2] Invoking `isItAnApple` with `['a', 'b', 'c' ]` will return `[ false, false, false ]`.
 */
 function isItAnApple(strings) {
-  let trueApples = [];
+  //let trueApples = [];
   const appleArray = strings.map(function(item){
-    if (item === 'apple'){
+    /*if (item === 'apple'){
       return trueApples.push(true);
     } else {
       return trueApples.push(false);
     }
   })
-  return trueApples;
+  return trueApples;*/
+    return item === 'apple';
+  })
+  return appleArray;
 }
 
 /**
@@ -207,13 +210,16 @@ function isItAnApple(strings) {
  * [2] Invoking `removeApple` with `['a', 'b', 'c' ]` will return `[ 'a', 'b', 'c' ]`.
 */
 function removeApple(strings) {
-  let applelessArray = [];
+  //let applelessArray = [];
   const appleFilter = strings.filter(function(item){
-    if (item !== 'apple'){
+    /*if (item !== 'apple'){
     return applelessArray.push(item);
     }else{}
   })
-  return applelessArray;
+  return applelessArray;*/
+  return item !== 'apple';
+  })
+  return appleFilter;
 }
 
 /**
@@ -231,9 +237,16 @@ function removeApple(strings) {
  * 
  * [2] Invoking `stringSmash` with `['a', 'b', 'c' ]` will return `abc`.
 */
-function stringSmash(/* code here */) {
-  /* code here */
+//const fruit = [ 'orange', 'apple', 'banana', 'apples', 'apple', 'mango' ]
+
+function stringSmash(strings) {
+  const stringReducer = strings.reduce(function(accumulator, item){
+    return `${accumulator}${item}`;
+  }, "");
+  return stringReducer;
 }
+
+//console.log(stringSmash(fruit));
 
 // A local community center is holding a fund raising 5k fun run and has invited
 // 50 small businesses to make a small donation on their behalf for some much needed
