@@ -197,7 +197,7 @@ function isItAnApple(strings) {
  * Implement this function using filter().
  * 
  * @param strings an array of strings.
- * @returns a similar array, with an entries that are 'apple' removed.
+ * @returns a similar array, with any entries that are 'apple' removed.
  * 
  *This function is case sensitive and, for example, should not remove 'Apple' or 'APPLE'
  * 
@@ -206,8 +206,14 @@ function isItAnApple(strings) {
  * 
  * [2] Invoking `removeApple` with `['a', 'b', 'c' ]` will return `[ 'a', 'b', 'c' ]`.
 */
-function removeApple(/* code here */) {
-  /* code here */
+function removeApple(strings) {
+  let applelessArray = [];
+  const appleFilter = strings.filter(function(item){
+    if (item !== 'apple'){
+    return applelessArray.push(item);
+    }else{}
+  })
+  return applelessArray;
 }
 
 /**
