@@ -351,10 +351,15 @@ function tallyUpDonations(runners) {
  * 
  * 1. What is the difference between counter1 and counter2?
  * 
+ * counter2 uses a global variable whereas counter1 uses a variable inclosed inside of a function.
+ * 
  * 2. Which of the two uses a closure? How can you tell?
+ * 
+ * it looks like counter1 uses closure since it isn't using a global variable.
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
  *
+ * counter1 would be best used in a circumstance where you don't want the count variable to be altered by another program, maybe such as total video views on Youtube. counter2 might be used for an individual video since you wouldn't want the views of another video to have an impact on the video in question.
 */
 
 // counter1 code
