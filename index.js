@@ -48,8 +48,8 @@ function processFirstItem(stringList, callback) {
  * [2] Invoking `processLength` passing `[]` and `(num) => "There are " + num`,
  * should return "There are 0".
 */
-function processLength(/* CODE HERE */) {
-  /* CODE HERE */
+function processLength(list, callback) {
+  return callback(list.length);
 }
 
 /**
@@ -66,8 +66,8 @@ function processLength(/* CODE HERE */) {
  * Invoking `processLastItem` passing `['foo', 'bar']` and `(str) => str + str`,
  * should return 'barbar'.
 */
-function processLastItem(/* CODE HERE */) {
-  /* CODE HERE */
+function processLastItem(stringList, callback) {
+  return callback(stringList[stringList.length -1]);
 }
 
 /**
@@ -88,8 +88,8 @@ function processLastItem(/* CODE HERE */) {
  * [2] Invoking `processSum` passing `-5`, '-1', and `(num) => num + 1000`,
  * should return 994.
 */
-function processSum(/* CODE HERE */) {
-  /* CODE HERE */
+function processSum(num1, num2, callback) {
+  return callback(num1 + num2);
 }
 
 /**
@@ -110,8 +110,8 @@ function processSum(/* CODE HERE */) {
  * [2] Invoking `processProduct` passing 25 and 0 and `(num) => num + 1000`,
  * should return 1000.
 */
-function processProduct(/* CODE HERE */) {
-  /* CODE HERE */
+function processProduct(num1, num2, callback) {
+  return callback(num1 * num2);
 }
 
 /**
@@ -132,8 +132,11 @@ function processProduct(/* CODE HERE */) {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
 */
-function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
-  /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
+// filter() syntax
+// let newArray = arr.filter(callback(element[,index, [array]])[,thisArg])
+function processDuplicateFree(list, callback) {
+  const duplicateFree = list.filter((item, index) => list.indexOf(item) === index)
+  return duplicateFree;
 }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -155,10 +158,14 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
  * 
  * [2] Invoking `lowerCaseStrings` with `['a', 'b', 'c' ]` will return `[ 'a', 'b', 'c' ]`.
 */
-function lowerCaseStrings(/* code here */) {
-  /* code here */
-}
 
+function lowerCaseStrings(strings) {
+  let lowerString = [];
+  strings.forEach(function(item){
+    return lowerString.push(item.toLowerCase());
+  })
+  return lowerString;
+}
 /**
  * ### Challenge `isItAnApple`
  * 
@@ -174,8 +181,19 @@ function lowerCaseStrings(/* code here */) {
  * 
  * [2] Invoking `isItAnApple` with `['a', 'b', 'c' ]` will return `[ false, false, false ]`.
 */
-function isItAnApple(/* code here */) {
-  /* code here */
+function isItAnApple(strings) {
+  //let trueApples = [];
+  const appleArray = strings.map(function(item){
+    /*if (item === 'apple'){
+      return trueApples.push(true);
+    } else {
+      return trueApples.push(false);
+    }
+  })
+  return trueApples;*/
+    return item === 'apple';
+  })
+  return appleArray;
 }
 
 /**
@@ -185,7 +203,7 @@ function isItAnApple(/* code here */) {
  * Implement this function using filter().
  * 
  * @param strings an array of strings.
- * @returns a similar array, with an entries that are 'apple' removed.
+ * @returns a similar array, with any entries that are 'apple' removed.
  * 
  *This function is case sensitive and, for example, should not remove 'Apple' or 'APPLE'
  * 
@@ -194,8 +212,17 @@ function isItAnApple(/* code here */) {
  * 
  * [2] Invoking `removeApple` with `['a', 'b', 'c' ]` will return `[ 'a', 'b', 'c' ]`.
 */
-function removeApple(/* code here */) {
-  /* code here */
+function removeApple(strings) {
+  //let applelessArray = [];
+  const appleFilter = strings.filter(function(item){
+    /*if (item !== 'apple'){
+    return applelessArray.push(item);
+    }else{}
+  })
+  return applelessArray;*/
+  return item !== 'apple';
+  })
+  return appleFilter;
 }
 
 /**
@@ -213,9 +240,16 @@ function removeApple(/* code here */) {
  * 
  * [2] Invoking `stringSmash` with `['a', 'b', 'c' ]` will return `abc`.
 */
-function stringSmash(/* code here */) {
-  /* code here */
+//const fruit = [ 'orange', 'apple', 'banana', 'apples', 'apple', 'mango' ]
+
+function stringSmash(strings) {
+  const stringReducer = strings.reduce(function(accumulator, item){
+    return `${accumulator}${item}`;
+  }, "");
+  return stringReducer;
 }
+
+//console.log(stringSmash(fruit));
 
 // A local community center is holding a fund raising 5k fun run and has invited
 // 50 small businesses to make a small donation on their behalf for some much needed
@@ -232,9 +266,21 @@ function stringSmash(/* code here */) {
  * @returns an array with all the runners' full names in the following format: "Smith, John".
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
-function getFullNames(/* CODE HERE */) {
-  /* CODE HERE */
+
+function getFullNames(runners) {
+  let nameString = [];
+  runners.forEach(function(item){
+    return nameString.push(`${item.last_name}, ${item.first_name}`);
+  })
+  return nameString;
 }
+/*function getFullNames(runners) {
+  const lastNameFirst =
+  runners.map((item)=>{
+    return `${item.last_name}, ${item.first_name}`; 
+  });
+  return lastNameFirst;
+};*/
 
 /**
  * ### Challenge `firstNamesAllCaps`
@@ -248,8 +294,11 @@ function getFullNames(/* CODE HERE */) {
  * @returns an array with all the runners' first names in ALL CAPS.
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
-function firstNamesAllCaps(/* CODE HERE */) {
-  /* CODE HERE */
+function firstNamesAllCaps(runners) {
+  const drunkWithPower = runners.map(function(item){
+    return `${item.first_name}`.toUpperCase();
+  })
+  return drunkWithPower;
 }
 
 /**
@@ -266,8 +315,11 @@ function firstNamesAllCaps(/* CODE HERE */) {
  * @returns an array containing only the runners that use the given `tShirtSize`.
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
-function getRunnersByTShirtSize(/* CODE HERE */) {
-  /* CODE HERE */
+function getRunnersByTShirtSize(runners, tShirtSize) {
+  const shirtSizeFinder = runners.filter(function(item){
+    return item.shirt_size === tShirtSize;
+  })
+  return shirtSizeFinder;
 }
 
 /**
@@ -281,8 +333,11 @@ function getRunnersByTShirtSize(/* CODE HERE */) {
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
 */
-function tallyUpDonations(/* CODE HERE */) {
-  /* CODE HERE */
+function tallyUpDonations(runners) {
+  const totalDonated = runners.reduce(function(accumulator, item){
+    return accumulator + item.donation;
+  }, 0)
+  return totalDonated;
 }
 
 /////////////// CLOSURES ///////////////
@@ -296,10 +351,15 @@ function tallyUpDonations(/* CODE HERE */) {
  * 
  * 1. What is the difference between counter1 and counter2?
  * 
+ * counter2 uses a global variable whereas counter1 uses a variable inclosed inside of a function.
+ * 
  * 2. Which of the two uses a closure? How can you tell?
+ * 
+ * it looks like counter1 uses closure since it isn't using a global variable.
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
  *
+ * counter1 would be best used in a circumstance where you don't want the count variable to be altered by another program, maybe such as total video views on Youtube. counter2 might be used for an individual video since you wouldn't want the views of another video to have an impact on the video in question.
 */
 
 // counter1 code
@@ -309,12 +369,9 @@ function counterMaker() {
     count++;
   }
 }
-
 const counter1 = counterMaker();
-
 // counter2 code
 let count = 0;
-
 function counter2() {
   return count++;
 }
@@ -340,8 +397,17 @@ function counter2() {
  * counter() // should return 0
  * etc
 */
-function counterMakerWithLimit(/* CODE HERE */) {
-  /* CODE HERE */
+function counterMakerWithLimit(number) {
+  let count = 0;
+  return function counter(){
+    if (count < number){
+      count++;
+      return count - 1;
+    } else {
+      count = 0;
+      return number;
+    }
+  };
 }
 
 /////////////// END OF CHALLENGE ///////////////
