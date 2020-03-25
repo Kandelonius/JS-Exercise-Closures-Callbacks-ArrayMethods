@@ -361,12 +361,9 @@ function counterMaker() {
     count++;
   }
 }
-
 const counter1 = counterMaker();
-
 // counter2 code
 let count = 0;
-
 function counter2() {
   return count++;
 }
@@ -392,8 +389,17 @@ function counter2() {
  * counter() // should return 0
  * etc
 */
-function counterMakerWithLimit(/* CODE HERE */) {
-  /* CODE HERE */
+function counterMakerWithLimit(number) {
+  let count = 0;
+  return function counter(){
+    if (count < number){
+      count++;
+      return count - 1;
+    } else {
+      count = 0;
+      return number;
+    }
+  };
 }
 
 /////////////// END OF CHALLENGE ///////////////
