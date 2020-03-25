@@ -132,8 +132,11 @@ function processProduct(num1, num2, callback) {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
 */
-function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
-  /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
+// filter() syntax
+// let newArray = arr.filter(callback(element[,index, [array]])[,thisArg])
+function processDuplicateFree(list, callback) {
+  const duplicateFree = list.filter((item, index) => list.indexOf(item) === index)
+  return duplicateFree;
 }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
